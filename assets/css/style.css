@@ -106,6 +106,9 @@ footer .w-md-50 > a {
     padding-top: 4rem !important;
     padding-bottom: 4rem !important;
   }
+  footer .w-md-50 > a {
+    opacity: 1;
+  }
 }
 
 * {
