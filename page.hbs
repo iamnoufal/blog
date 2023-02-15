@@ -1,0 +1,35 @@
+{{!< default}}
+
+{{#post}}
+
+<style>
+  .page-head {
+    height: 100vh;
+    background-size: cover;
+    background-position: center top;
+  }
+</style>
+
+<article class="post-content p-0 {{post_class}}">
+
+  {{#if feature_image}}
+    <style>
+      .feature-image {
+        background-image: url("{{img_url feature_image}}");
+      }
+    </style>
+    <header class="m-0 mw-100 page-head feature-image">
+      <h2 class="page-head-title text-white">{{title}}</h2>
+    </header>
+  {{else}}
+    <header class="m-0 mw-100 page-head feature-image">
+      <h2 class="page-head-title text-white">{{title}}</h2>
+    </header>
+  {{/if}}
+
+  <div class="post-content-body gh-content gh-canvas">
+    {{content}}
+  </div>
+
+</article>
+{{/post}}

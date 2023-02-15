@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+
+  {{!-- Document Settings --}}
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  {{!-- Base Meta --}}
+  <title>{{meta_title}}</title>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {{!-- Styles'n'Scripts --}}
+  <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "css/bootstrap.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
+
+  {{!-- This tag outputs SEO meta+structured data and other important settings --}}
+  {{ghost_head}}
+
+</head>
+<body class="{{body_class}} is-head-{{#match @custom.navigation_layout "Logo on the left"}}left-logo{{else match @custom.navigation_layout "Logo in the middle"}}middle-logo{{else}}stacked{{/match}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}">
+  {{!-- <nav class="position-fixed w-100 gh-sm-menu d-flex">
+    <ul class="my-auto nav flex-column">
+      <li class="mb-3"><a class="text-white text-decoration-none fs-3" href="https://blog.noufal.engineer">Home</a></li>
+      <li class="mb-3"><a class="text-white text-decoration-none fs-3" href="https://blog.noufal.engineer/about/">About</a></li>
+    </ul>
+  </nav> --}}
+  <header id="gh-head" class="gh-head gh-outer position-absolute w-100 py-5 bg-transparent h-auto overflow-hidden">
+    <div class="gh-head-inner gh-inner py-3 mb-md-5 container d-block d-md-grid h-auto px-4">
+      <div class="gh-head-brand h-auto">
+        <div class="gh-head-brand-wrapper">
+          <a class="gh-head-logo d-flex align-items-center text-capitalize" href="{{@site.url}}">
+            {{!-- {{#if @site.logo}} --}}
+              <img src="{{@site.logo}}" class="me-3" alt="{{@site.title}}">
+            {{!-- {{else}} --}}
+              {{@site.title}}
+            {{!-- {{/if}} --}}
+          </a>
+        </div>
+        <button class="gh-search gh-icon-btn" data-ghost-search>{{> "icons/search"}}</button>
+        <button class="gh-burger"></button>
+      </div>
+      <nav class="position-fixed w-100 gh-sm-menu d-flex">
+        <ul class="my-auto nav flex-column">
+          <li class="mb-2 fade"><a class="text-white text-decoration-none fs-3" href="https://blog.noufal.engineer">Home</a></li>
+          <li class="mb-2 fade"><a class="text-white text-decoration-none fs-3" href="https://blog.noufal.engineer/about/">About</a></li>
+        </ul>
+      </nav>
+      <nav class="gh-head-menu me-0 d-none d-md-flex">
+        <ul class="ms-auto nav">
+          <li class="nav-home"><a href="/">Home</a></li>
+          <li class="nav-about"><a href="/about">About</a></li>
+        </ul>
+        {{!-- {{#unless @site.members_enabled}}
+          {{#match @custom.navigation_layout "Stacked"}} --}}
+            <button class="gh-search gh-icon-btn text-white" data-ghost-search>{{> "icons/search"}}</button>
+          {{!-- {{/match}}
+        {{/unless}} --}}
+      </nav>
+
+      {{!-- <div class="gh-head-actions">
+        {{#unless @site.members_enabled}}
+          {{^match @custom.navigation_layout "Stacked"}}
+            <button class="gh-search gh-icon-btn" data-ghost-search>{{> "icons/search"}}</button>
+          {{/match}}
+        {{else}}
+          <button class="gh-search gh-icon-btn" data-ghost-search>{{> "icons/search"}}</button>
+          <div class="gh-head-members">
+            {{#unless @member}}
+              {{#unless @site.members_invite_only}}
+                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
+              {{else}}
+                <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signin" data-portal="signin">Sign in</a>
+              {{/unless}}
+            {{else}}
+              <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/account" data-portal="account">Account</a>
+            {{/unless}}
+          </div>
+        {{/unless}}
+      </div> --}}
+    </div>
+  </header>
+  {{!-- <div class="site-wrapper"> --}}
+
+    
+
+    <main id="site-main" class="site-main">
+      {{{body}}}
+    </main>
+    
+    <script>
+      const removeGhostPowered = () => {
+        const interval = setInterval(() => {
+          let portal = document.getElementById("ghost-portal-root");
+          try {
+            let frame = portal.querySelector('[title="portal-popup"]');
+            if (frame !== null) {
+              const styleElement = document.createElement("style");
+              if (styleElement != null || styleElement != undefined) {
+                styleElement.innerHTML = `.gh-portal-powered { display: none; }`;
+                frame.contentDocument.head.appendChild(styleElement);
+                clearInterval(interval)
+              }
+            } else {
+              frame = null
+            }
+          } catch(e) {}
+        }, 10)
+      }
+    </script>
+
+    <footer>
+			<div class="gh-foot">
+				<div class="d-block d-md-flex container">
+					<div class="w-md-50 d-flex flex-column align-items-center d-md-block px-5 p-md-0">
+						<h2 class="text-wrap text-center text-md-start text-white">Subscribing to the newsletter keeps you upto date!</h2>
+						{{!-- <div class="btn btn-secondary my-3 fs-4 rounded-pill px-5 py-3 bg-dark border-0 hover:border-1" onclick="removeGhostPowered()"> --}}
+							{{!-- <a href="/#/portal" class="text-white text-decoration-none">Join Today!</a> --}}
+              <a href="#/portal" class="btn" onclick="removeGhostPowered()">
+                <span class="btn__circle"></span>
+                <span class="btn__white-circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" id="icon-arrow-right" viewBox="0 0 21 12">
+                    <path d="M17.104 5.072l-4.138-4.014L14.056 0l6 5.82-6 5.82-1.09-1.057 4.138-4.014H0V5.072h17.104z"></path>
+                  </svg>
+                </span>
+                <span class="btn__text fs-4 text-white">Join Today!</span>
+              </a>
+						{{!-- </div> --}}
+					</div>
+					<div class="w-md-50 d-block d-md-flex align-items-end fs-4 flex-column text-center mt-5 mt-md-0">
+						<a href="/about">About</a>
+						<span class="fs-1 fw-semibold d-md-none mx-2">•</span>
+						<a href="http://noufal.engineer" target="_blank" rel="noopener noreferrer">Portfolio</a>
+						<span class="fs-1 fw-semibold d-md-none mx-2">•</span>
+						<a href="mailto:jnrahman12@gmail.com">Contact</a>
+						<p class="fs-5 my-3">{{@site.title}} © {{date format="YYYY"}} All rights reserved</p>
+					</div>
+				</div>
+				{{!-- <div class="gh-foot-inner gh-inner">
+					<nav class="gh-foot-menu">hello</nav>
+					<div class="gh-copyright text-white">
+						{{@site.title}} © {{date format="YYYY"}} All rights reserved
+					</div>
+					<div class="gh-powered-by">
+						<div>
+							<a href="/about">About</a>
+						</div>
+						<div>
+							<a href="http://noufal.engineer" target="_blank" rel="noopener noreferrer">Portfolio</a>
+						</div>
+						<div>
+							<a href="mailto:jnrahman12@gmail.com">Contact</a>
+						</div>
+					</div>
+				</div> --}}
+			</div>
+    </footer>
+
+  {{!-- </div> --}}
+
+  {{#is "post, page"}}
+    {{> "pswp"}}
+  {{/is}}
+
+  <script src="{{asset "built/main.min.js"}}"></script>
+  <script>
+    if (window.location.href.includes("#")) {
+      removeGhostPowered()
+    }
+  </script>
+
+  {{ghost_foot}}
+
+</body>
+</html>
