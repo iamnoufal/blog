@@ -46,6 +46,26 @@ function css(done) {
     dest('assets/built/', {sourcemaps: '.'}),
     livereload()
   ], handleError(done));
+  pump([
+    src('assets/css/style.css', {sourcemaps: true}),
+    postcss([
+      easyimport,
+      autoprefixer(),
+      cssnano()
+    ]),
+    dest('assets/built/', {sourcemaps: '.'}),
+    livereload()
+  ], handleError(done));
+  pump([
+    src('assets/css/bootstrap.css', {sourcemaps: true}),
+    postcss([
+      easyimport,
+      autoprefixer(),
+      cssnano()
+    ]),
+    dest('assets/built/', {sourcemaps: '.'}),
+    livereload()
+  ], handleError(done));
 }
 
 function js(done) {
@@ -54,7 +74,7 @@ function js(done) {
       'node_modules/@tryghost/shared-theme-assets/assets/js/v1/lib/**/*.js',
       'node_modules/@tryghost/shared-theme-assets/assets/js/v1/main.js',
       'assets/js/lib/*.js',
-      'assets/js/main.js'
+      'assets/js/main.js',
     ], {sourcemaps: true}),
     concat('main.min.js'),
     uglify(),

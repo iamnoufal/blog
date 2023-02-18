@@ -175,7 +175,7 @@ production stylesheet in assets/built/screen.css using gulp dev
   align-items: center;
   justify-content: center;
   color: #fff;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   opacity: 1;
   transition: opacity 0.5s cubic-bezier(0.33, 0, 0.2, 1);
 }
@@ -188,6 +188,9 @@ production stylesheet in assets/built/screen.css using gulp dev
   .post-card:not(.no-image) .post-card-content {
     opacity: 1;
   }
+  .post-card-title {
+    font-size: 2em !important;
+  }
 }
 
 .post-card-link:hover .post-card-content {
@@ -198,7 +201,7 @@ production stylesheet in assets/built/screen.css using gulp dev
   display: inline-block;
   max-width: 70%;
   margin: 0;
-  font-size: 3.4rem;
+  font-size: 3em;
   font-weight: 800;
   color: var(--color-white);
   text-align: center;
@@ -268,7 +271,7 @@ production stylesheet in assets/built/screen.css using gulp dev
   /* line-height: 1.6em; */
   color: var(--color-base);
   /* text-align: center; */
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .has-serif-body .post-content-excerpt {
@@ -331,4 +334,17 @@ production stylesheet in assets/built/screen.css using gulp dev
 .author-links .divider {
   display: inline-block;
   margin: 0 3px;
+}
+
+.gh-content h4 {
+  font-size: 1.2em !important;
+  font-weight: 700;
+}
+
+.gh-content p > code {
+  font-size: inherit !important;
+}
+
+.gh-content pre {
+  border-radius: 8px;
 }

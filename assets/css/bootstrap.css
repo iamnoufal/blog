@@ -360,7 +360,7 @@ code,
 kbd,
 samp {
   font-family: var(--bs-font-monospace);
-  font-size: 1em;
+  font-size: 0.9em !important;
 }
 
 pre {
