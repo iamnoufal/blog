@@ -15,6 +15,7 @@ production stylesheet in assets/built/screen.css using gulp dev
 /* ---------------------------------------------------------- */
 
 * {
+  font-size: 1.5rem;
   transition: 0.4s
 }
 
