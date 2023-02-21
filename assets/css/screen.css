@@ -15,7 +15,6 @@ production stylesheet in assets/built/screen.css using gulp dev
 /* ---------------------------------------------------------- */
 
 * {
-  font-size: 1.5rem;
   transition: 0.4s
 }
 
@@ -48,6 +47,9 @@ production stylesheet in assets/built/screen.css using gulp dev
 }
 
 @media (max-width: 850px) {
+  * {
+    font-size: 1.5rem;
+  }
   .site-wrapper {
     padding: 6vw;
   }
